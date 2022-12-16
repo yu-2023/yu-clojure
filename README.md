@@ -1,2 +1,2 @@
 # yu-clojure
-JAGO yu-clojure
+yu-clojure
