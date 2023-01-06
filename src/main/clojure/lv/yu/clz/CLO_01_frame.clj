@@ -1,25 +1,29 @@
 
-;;;
+;;;-----------------------------
  ; 
  ; Clojure package     lv.yu.clz
  ; 
  ; Clojure program     CLO_01_frame.clj     Apache License 2.0
  ;      
- ; Copyright (c)    Yuri Utkin 2023     mob.+371 12345678     https://www.jago.lv
+ ; Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv
  ; 
- ;;
-(ns lv.yu.clz.CLO-01-frame
-
+ ;;------------------------------
+	 
+(ns ^{:doc    "Clojure package     lv.yu.clz
+	           Clojure program     CLO_01_frame.clj     Apache License 2.0
+	           Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv"
+	  :author "Yuri Utkin"}
+		
+	lv.yu.clz.CLO-01-frame  ;;  CLO-01-frame demonstrates Clojure Frame
+		
   (:import [javax.swing
                        JFrame                      
                        ImageIcon ]
-           [java.awt
-                       EventQueue ]                
   )  ;;  end import 
    
 )  ;;  end ns
      
-;;------------------------------     
+;;------------------------------
             
   (gen-class
     :name lv.yu.clz.CLO_01_frame
@@ -44,7 +48,7 @@
 
     (doto frame
     
-        (.setTitle (str "     JAGO clojure -- CLO_01_frame -- v. 2023.01.01"))
+        (.setTitle (str "     CLOJURE -- CLO_01_frame -- v. 2023.01.01"))
      
         (.setBounds (+ 10 (* 0 40) 300) (+ 10 (* 0 40)) 1000 600)
       
@@ -77,4 +81,3 @@
 )  ;;  end -main []
             
 ;;------------------------------
-    
