@@ -12,9 +12,9 @@
 (ns ^{:doc    "Clojure package     lv.yu.clz
                Clojure program     CLO_02_text.clj      Apache License 2.0
                Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv" 
-	  :author "Yuri Utkin"}
+      :author "Yuri Utkin"}
 	  
-	lv.yu.clz.CLO-02-text  ;;  CLO-02-text demonstrates Clojure TextArea in Clojure Frame
+    lv.yu.clz.CLO-02-text  ;;  CLO-02-text demonstrates Clojure TextArea in Clojure Frame
 
   (:import [javax.swing
                        JFrame
