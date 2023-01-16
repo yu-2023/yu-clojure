@@ -10,8 +10,8 @@
  ;;------------------------------
 	 
 (ns ^{:doc    "Clojure package     lv.yu.clz
-	           Clojure program     CLO_01_frame.clj     Apache License 2.0
-	           Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv"
+               Clojure program     CLO_01_frame.clj     Apache License 2.0
+               Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv"
       :author "Yuri Utkin"}
 		
     lv.yu.clz.CLO-01-frame  ;;  CLO-01-frame demonstrates Clojure Frame
