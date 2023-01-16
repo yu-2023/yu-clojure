@@ -10,15 +10,18 @@
  ;;------------------------------
 	 
 (ns ^{:doc    "Clojure package     lv.yu.clz
-	       Clojure program     CLO_01_frame.clj     Apache License 2.0
-	       Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv"
+	           Clojure program     CLO_01_frame.clj     Apache License 2.0
+	           Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv"
       :author "Yuri Utkin"}
 		
     lv.yu.clz.CLO-01-frame  ;;  CLO-01-frame demonstrates Clojure Frame
 		
   (:import [javax.swing
                        JFrame                      
-                       ImageIcon ]
+                       ImageIcon ]                   		   
+           [java.awt
+                       BorderLayout ]                    
+
   )  ;;  end import 
    
 )  ;;  end ns
@@ -44,17 +47,21 @@
 	  
      ]
 
-;;------------------------------   
+;;------------------------------ 
+
+    (def title (str "CLOJURE -- CLO_01_frame -- v. 2023.01.01"))
 
     (doto frame
     
-        (.setTitle (str "     CLOJURE -- CLO_01_frame -- v. 2023.01.01"))
+        (.setTitle (str "     " title))
      
         (.setBounds (+ 10 (* 0 40) 300) (+ 10 (* 0 40)) 1000 600)
       
         (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
 
         (.setIconImage (.getImage icon_frame))
+
+        (.setLayout (BorderLayout.))
         
         (.setVisible true)
         

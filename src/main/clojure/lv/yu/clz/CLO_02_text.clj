@@ -22,10 +22,11 @@
                        JScrollPane
                        JTextArea ]                    
            [java.awt
-                       BorderLayout ]                    
-   )  ;;  end import
+                       BorderLayout ]
+
+  )  ;;  end import
    
- )  ;;  end ns
+)  ;;  end ns
     
 ;;------------------------------     
             
@@ -48,17 +49,21 @@
       
      ]
 
-;;------------------------------   
+;;------------------------------
+
+    (def title (str "CLOJURE -- CLO_02_text -- v. 2023.01.01"))
 
     (doto frame
     
-        (.setTitle (str "     CLOJURE -- CLO_02_text -- v. 2023.01.01"))
+        (.setTitle (str "     " title))
      
         (.setBounds (+ 10 (* 1 40) 300) (+ 10 (* 1 40)) 1000 600)
       
         (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
 
         (.setIconImage (.getImage icon_frame))
+        
+        (.setLayout (BorderLayout.))
         
         (.setVisible true)
 

@@ -3,34 +3,35 @@
  ; 
  ; Clojure package     lv.yu.clz
  ; 
- ; Clojure program     CLO_03_menu.clj     Apache License 2.0
+ ; Clojure program     CLO_05_action.clj     Apache License 2.0
  ;      
- ; Copyright (c)       Yuri Utkin 2023     mob.+371 12345678     https://www.jago.lv
+ ; Copyright (c)       Yuri Utkin 2023       mob.+371 12345678     https://www.jago.lv
  ; 
  ;;------------------------------
 	 
 (ns ^{:doc    "Clojure package     lv.yu.clz
-               Clojure program     CLO_03_menu.clj      Apache License 2.0
-               Copyright (c)       Yuri Utkin 2023      mob.+371 12345678     https://www.jago.lv" 
+               Clojure program     CLO_05_action.clj     Apache License 2.0
+               Copyright (c)       Yuri Utkin 2023       mob.+371 12345678     https://www.jago.lv" 
       :author "Yuri Utkin"}
-
-    lv.yu.clz.CLO-03-menu  ;;  CLO-03-menu demonstrates Clojure Menu
-
+		
+    lv.yu.clz.CLO-05-action  ;;  CLO-05-action demonstrates Clojure Menu Action
+		
   (:import [javax.swing
                           JFrame
                           ImageIcon
                           JScrollPane
-                          JTextArea                       
+                          JTextArea
                           JMenu
                           JMenuBar
                           JMenuItem 
-                          JCheckBoxMenuItem                       
-                          KeyStroke]                
+                          JCheckBoxMenuItem
+                          KeyStroke]                       
            [java.awt
-                          BorderLayout]                    
+                          BorderLayout]
            [java.awt.event 
                           KeyEvent
-                          ActionEvent]
+                          ActionEvent
+                          ActionListener]
                     
   )  ;;  end import
    
@@ -39,10 +40,16 @@
 ;;------------------------------     
             
   (gen-class
-    :name lv.yu.clz.CLO_03_menu
+    :name lv.yu.clz.CLO_05_action
     :main true
-    :methods [[CLO_03_menu [] void]]
+    :methods [[CLO_05_action [] void]]
   )
+
+;;------------------------------
+
+(defn create-listener [lmbd]
+  (proxy [ActionListener] []
+    (actionPerformed [e] (lmbd e))))
 
 ;;------------------------------
 
@@ -59,13 +66,13 @@
 
 ;;------------------------------
 
-    (def title (str "CLOJURE -- CLO_03_menu -- v. 2023.01.01"))
+    (def title (str "CLOJURE -- CLO_05_action -- v. 2023.01.01"))
 
     (doto frame
     
         (.setTitle (str "     " title))
-        
-        (.setBounds (+ 10 (* 2 40) 300) (+ 10 (* 2 40)) 1000 600)
+     
+        (.setBounds (+ 10 (* 4 40) 300) (+ 10 (* 4 40)) 1000 600)
       
         (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
 
@@ -79,10 +86,10 @@
       
 )  ;;  end let
 
-;;------------------------------
+;;------------------------------         
 
   (let [
-
+        
         icon_Start        (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/start.gif")))             
         icon_Load         (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/load.gif")))
         icon_Xxxx         (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/xxxx.png"))) 
@@ -91,10 +98,10 @@
         icon_About        (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/about.gif"))) 
         icon_Eng          (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/prefs.gif")))
         icon_Rus          (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/prefs.gif"))) 
-        icon_Lat          (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/prefs.gif")))
+        icon_Lat          (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/prefs.gif"))) 
         icon_Exit         (ImageIcon. (.getResource (.getContextClassLoader (Thread/currentThread)) (str "lv/yu/clz/CLO_resources/exit.png")))  
         
-;;------------------------------  
+;;------------------------------        
         
         menubar            (JMenuBar.)
         
@@ -140,12 +147,12 @@
           (doto item_Start (.setAccelerator (KeyStroke/getKeyStroke KeyEvent/VK_S ActionEvent/ALT_MASK)))  ;;  Alt S
           (doto item_Load  (.setAccelerator (KeyStroke/getKeyStroke KeyEvent/VK_L ActionEvent/ALT_MASK)))  ;;  Alt L
           (doto item_Xxxx  (.setAccelerator (KeyStroke/getKeyStroke KeyEvent/VK_X ActionEvent/ALT_MASK)))  ;;  Alt X
-                
+        
         (doto menu_Start1 (.setMnemonic KeyEvent/VK_1))  ;;  Alt 1        
         (doto menu_Start1 (.setToolTipText "Start1 commands"))
           (doto item_St11 (.setToolTipText "St11 application"))
           (doto item_St12 (.setToolTipText "St12 application"))
-              
+      
         (doto menu_Start2 (.setMnemonic KeyEvent/VK_2))  ;;  Alt 2        
         (doto menu_Start2 (.setToolTipText "Start2 commands"))
           (doto item_St21 (.setToolTipText "St21 application"))
@@ -155,25 +162,44 @@
         (doto menu_Start3 (.setToolTipText "Start3 commands"))
           (doto item_St31 (.setToolTipText "St31 application"))
           (doto item_St32 (.setToolTipText "St32 application"))
-                
+        
         (doto menu_Help (.setMnemonic KeyEvent/VK_H))  ;;  Alt H        
         (doto menu_Help (.setToolTipText "Help commands"))
           (doto item_Information (.setToolTipText "Information application"))
           (doto item_Help (.setToolTipText "Help application"))
           (doto item_About (.setToolTipText "About application"))      
-                
+        
         (doto menu_Lang (.setMnemonic KeyEvent/VK_L))  ;;  Alt L        
         (doto menu_Lang (.setToolTipText "Lang commands"))
           (doto item_Eng (.setToolTipText "Eng application"))
           (doto item_Rus (.setToolTipText "Rus application"))  
           (doto item_Lat (.setToolTipText "Lat application"))
           (doto item_Eng (.setSelected true))
-                
+        
         (doto menu_Exit (.setMnemonic KeyEvent/VK_E))  ;;  Alt E        
         (doto menu_Exit (.setToolTipText "Exit commands"))
           (doto item_Exit (.setToolTipText "Exit application"))
+    
+;;------------------------------
 
-;;------------------------------       
+        (doto item_Start       (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Load        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Xxxx        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St11        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St12        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St21        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St22        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St31        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_St32        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Information (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Help        (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_About       (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Eng         (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Rus         (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )    
+        (doto item_Lat         (.addActionListener (create-listener (fn [e] (println "Selected menu: " (.getActionCommand e)) ) ) ) )
+        (doto item_Exit        (.addActionListener (create-listener (fn [e] (System/exit 0)                                   ) ) ) )
+
+;;------------------------------
 
         (.add menu_Menu item_Start)
         (.add menu_Menu item_Load)
@@ -197,9 +223,9 @@
         (.add menu_Lang item_Lat)
 
         (.add menu_Exit item_Exit)
+        
+;;------------------------------        
     
-;;------------------------------
-
         (.add menubar menu_Menu)
         (.add menubar menu_Start1)
         (.add menubar menu_Start2)
@@ -207,24 +233,28 @@
         (.add menubar menu_Help)
         (.add menubar menu_Lang)
         (.add menubar menu_Exit)
-    
-        (doto frame (.setJMenuBar menubar))      
- 
+              
+;;------------------------------
+        
+        (doto menubar (.setLayout ( lv.yu.clz.JAV_LIB_wrap_layout. ( lv.yu.clz.JAV_LIB_wrap_layout/LEFT ) 0 0 ) ) )
+
+        (doto frame (.setJMenuBar menubar))                       
+
  )  ;;  end let
- 
+                         
 ;;------------------------------
 
 (let 
 
      [
-      
+	      
       textarea (JTextArea.)
       scrollpane (JScrollPane. textarea)
-      
-     ]
+	      
+	 ]
 
       (doto textarea (.setText "
-    	    		   
+	   	    		   
         💞️💞️ EN
 
         Comparative analysis of programming in Java, Kotlin and Clojure.
@@ -242,9 +272,9 @@
         Как программировать одновременно на Java, Kotlin и Clojure.
 
         Интеграция Java, Kotlin и Clojure в одном программном продукте.
-    	    	      
+	    	    	    	    	      
 
-    	    	        
+	    	    	    	    	        
         🌱🌱 LV
 
         Java, Kotlin un Clojure programmēšanas salīdzinošā analīze.
@@ -252,8 +282,8 @@
         Kā programmēt Java, Kotlin un Clojure vienlaicīgi.
 
         Java, Kotlin un Clojure integrācija vienā programmatūras produktā.
-    	    	      
-                               " ) )
+	    	    	    	    	      
+	                               " ) )
 
       (doto (.getContentPane frame) (.add scrollpane(BorderLayout/CENTER)))
      
@@ -261,22 +291,22 @@
 
 )  ;;  end let
 
-;;------------------------------          
+;;------------------------------
       
 )  ;;  end initframe
+      
+;;------------------------------
    
-;;------------------------------   
-   
-(defn CLO_03_menu [this]
+(defn CLO_05_action [this]
+            
+  (let [frame (JFrame.)] (initframe frame) )  
 
-  (let [frame (JFrame.)] (initframe frame) )
+)  ;;  end CLO_05_action []
 
-)  ;;  end CLO_03_menu []
-
-;;------------------------------   
+;;------------------------------
    
 (defn -main [& args]
-                    (CLO_03_menu[])
+                    (CLO_05_action[])
 )  ;;  end -main []
             
 ;;------------------------------

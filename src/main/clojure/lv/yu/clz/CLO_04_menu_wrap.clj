@@ -14,7 +14,7 @@
                Copyright (c)       Yuri Utkin 2023           mob.+371 12345678     https://www.jago.lv" 
       :author "Yuri Utkin"}
 		
-    lv.yu.clz.CLO-04-menu-wrap
+    lv.yu.clz.CLO-04-menu-wrap  ;;  CLO-04-menu-wrap demonstrates Clojure Menu Wrap
 
   (:import [javax.swing
                           JFrame
@@ -32,9 +32,9 @@
                           KeyEvent
                           ActionEvent]
         		   
-   )  ;;  end import
+  )  ;;  end import
    
- )  ;;  end ns
+)  ;;  end ns
  
 ;;------------------------------     
             
@@ -57,17 +57,23 @@
       
      ]
 
-;;------------------------------   
+;;------------------------------
+
+    (def title (str "CLOJURE -- CLO_04_menu_wrap -- v. 2023.01.01"))
 
     (doto frame
     
-        (.setTitle (str "     CLOJURE -- CLO_04_menu_wrap -- v. 2023.01.01"))
+        (.setTitle (str "     " title))
         
         (.setBounds (+ 10 (* 3 40) 300) (+ 10 (* 3 40)) 1000 600)
       
         (.setDefaultCloseOperation JFrame/EXIT_ON_CLOSE)
 
         (.setIconImage (.getImage icon_frame))
+        
+        (.setLayout (BorderLayout.))
+        
+        (.setVisible true)
 
     )  ;;  end frame
       
@@ -93,34 +99,34 @@
         menubar            (JMenuBar.)
         
         menu_Menu          (JMenu. "Menu")
-          item_Start       (JMenuItem. "Start" icon_Start)
-          item_Load        (JMenuItem. "Load"  icon_Load)
-          item_Xxxx        (JMenuItem. "Xxxx"  icon_Xxxx)
+          item_Start         (JMenuItem. "Start" icon_Start)
+          item_Load          (JMenuItem. "Load"  icon_Load)
+          item_Xxxx          (JMenuItem. "Xxxx"  icon_Xxxx)
         
         menu_Start1        (JMenu. "Start1")
-          item_St11        (JMenuItem. "St11")
-          item_St12        (JMenuItem. "St12")
+          item_St11          (JMenuItem. "St11")
+          item_St12          (JMenuItem. "St12")
           
         menu_Start2        (JMenu. "Start2")
-          item_St21        (JMenuItem. "St21")
-          item_St22        (JMenuItem. "St22")
+          item_St21          (JMenuItem. "St21")
+          item_St22          (JMenuItem. "St22")
 
         menu_Start3        (JMenu. "Start3")
-          item_St31        (JMenuItem. "St31")
-          item_St32        (JMenuItem. "St32")
+          item_St31          (JMenuItem. "St31")
+          item_St32          (JMenuItem. "St32")
           
         menu_Help          (JMenu. "Help")
-          item_Information (JMenuItem. "Information" icon_Information)
-          item_Help        (JMenuItem. "Help"        icon_Help)
-          item_About       (JMenuItem. "About"       icon_About)
+          item_Information   (JMenuItem. "Information" icon_Information)
+          item_Help          (JMenuItem. "Help"        icon_Help)
+          item_About         (JMenuItem. "About"       icon_About)
         
         menu_Lang          (JMenu. "Lang")
-          item_Eng         (JCheckBoxMenuItem. "Eng" icon_Eng)
-          item_Rus         (JCheckBoxMenuItem. "Rus" icon_Rus)
-          item_Lat         (JCheckBoxMenuItem. "Lat" icon_Lat)
+          item_Eng           (JCheckBoxMenuItem. "Eng" icon_Eng)
+          item_Rus           (JCheckBoxMenuItem. "Rus" icon_Rus)
+          item_Lat           (JCheckBoxMenuItem. "Lat" icon_Lat)
           
         menu_Exit          (JMenu. "Exit")
-          item_Exit        (JMenuItem. "Exit" icon_Exit)
+          item_Exit          (JMenuItem. "Exit" icon_Exit)
           
         ]
 
@@ -271,7 +277,7 @@
   
 )  ;;  end CLO_04_menu_wrap []
 
-;;------------------------------   
+;;------------------------------
    
 (defn -main [& args]
                     (CLO_04_menu_wrap[])
