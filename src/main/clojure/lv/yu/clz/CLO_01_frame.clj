@@ -15,7 +15,14 @@
       :author "Yuri Utkin"}
 		
     lv.yu.clz.CLO-01-frame  ;;  CLO-01-frame demonstrates Clojure Frame
-		
+	
+  (:require lv.yu.clz.CLO-02-text)
+  (:require lv.yu.clz.CLO-03-menu)
+  (:require lv.yu.clz.CLO-04-menu-wrap)
+  (:require lv.yu.clz.CLO-05-action)
+  (:require lv.yu.clz.CLO_06_internal_frame_one)
+  (:require lv.yu.clz.CLO_07_internal_frame_six)
+
   (:import [javax.swing
                        JFrame                      
                        ImageIcon ]                   		   
@@ -64,6 +71,13 @@
         (.setLayout (BorderLayout.))
         
         (.setVisible true)
+
+        (lv.yu.clz.CLO-02-text/CLO_02_text)
+        (lv.yu.clz.CLO-03-menu/CLO_03_menu)
+        (lv.yu.clz.CLO-04-menu-wrap/CLO_04_menu_wrap)
+        (lv.yu.clz.CLO-05-action/CLO_05_action)
+        (lv.yu.clz.CLO-06-internal-frame-one/CLO_06_internal_frame_one)
+        (lv.yu.clz.CLO-07-internal-frame-six/CLO_07_internal_frame_six)
         
     )  ;;  end frame
       
